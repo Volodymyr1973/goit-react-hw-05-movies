@@ -34,7 +34,7 @@ export const MovieDetails = () => {
 
   //   searchFilmById();
   // }, []);
-
+  searchFilmById();
   return (
     <>
       {filmDetail && (
