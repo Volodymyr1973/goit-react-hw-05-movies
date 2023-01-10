@@ -9,7 +9,7 @@ export const Home = () => {
   const originUrl = 'https://api.themoviedb.org/3/';
 
   const trendFilm = () => {
-    fetch(`${originUrl}trending/all/day?api_key=${KEY_FILM}`)
+    fetch(`${originUrl}trending/movie/week?api_key=${KEY_FILM}`)
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -35,7 +35,7 @@ export const Home = () => {
       <ul>
         {filmList.map(film => (
           <li key={film.id}>
-            <Link to="movies/:details">{nameFilm(film)}</Link>
+            <Link to={`movies/${film.id}`}>{nameFilm(film)}</Link>
           </li>
         ))}
       </ul>
