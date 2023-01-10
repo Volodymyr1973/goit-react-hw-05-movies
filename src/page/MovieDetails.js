@@ -1,7 +1,7 @@
 import { Link, Outlet, useParams } from 'react-router-dom';
-import { Cast } from '../components/cast/Cast';
-import { Reviews } from 'components/reviews/Reviews';
-import { useState, useEffect } from 'react';
+// import { Cast } from '../components/cast/Cast';
+// import { Reviews } from 'components/reviews/Reviews';
+import { useState } from 'react';
 
 export const MovieDetails = () => {
   const params = useParams();
@@ -29,11 +29,11 @@ export const MovieDetails = () => {
       .catch(error => console.log(error));
   };
 
-  useEffect(() => {
-    console.log(3);
+  // useEffect(() => {
+  //   console.log(3);
 
-    searchFilmById();
-  }, []);
+  //   searchFilmById();
+  // }, []);
 
   return (
     <>
