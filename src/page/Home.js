@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
-export const Home = () => {
+const Home = () => {
   const [filmList, setFilmList] = useState([]);
   console.log(filmList);
   const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
@@ -42,3 +42,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

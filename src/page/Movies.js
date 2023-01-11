@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // import { useSearchParams } from 'react-router-dom';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchFilm, setSearchFilm] = useState([]);
   const [searchName, setSearchName] = useState('');
   const location = useLocation();
@@ -78,3 +78,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

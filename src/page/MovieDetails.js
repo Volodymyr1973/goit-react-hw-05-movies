@@ -1,9 +1,9 @@
 import { Link, Outlet, useParams } from 'react-router-dom';
 // import { Cast } from '../components/cast/Cast';
 // import { Reviews } from 'components/reviews/Reviews';
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const params = useParams();
   const paramsId = Number(params.moviesId);
   const [filmDetail, setFilmDetail] = useState();
@@ -29,14 +29,14 @@ export const MovieDetails = () => {
       .catch(error => console.log(error));
   };
 
-  // useEffect(() => {
-  //   console.log(3);
+  useEffect(() => {
+    console.log(3);
 
-  //   searchFilmById();
-  // }, []);
-  searchFilmById();
+    searchFilmById();
+  }, []);
+
   return (
-    <>
+    <section>
       {filmDetail && (
         <div>
           <img
@@ -55,7 +55,7 @@ export const MovieDetails = () => {
             User score: {Number.parseInt(filmDetail.vote_average * 10)} &#37;
           </p>
           <p>
-            Overview: <span>{filmDetail.overview}</span>
+            Overview:{filmDetail.overview}
           </p>
           <p>
             Genres:
@@ -65,13 +65,20 @@ export const MovieDetails = () => {
           </p>
         </div>
       )}
-      <section>
-        <Link to="cast">Cast</Link>
-        <Link to="reviews">Reviews</Link>
-      </section>
-      <section>
-        <Outlet />
-      </section>
-    </>
+      <ul>
+        <li><Link to="cast">Cast</Link></li>
+        <li><Link to="reviews">Reviews</Link></li>
+      </ul>
+
+      {/* <Cast />
+        <Reviews /> */}
+        <Suspense fallback={<p>Loading...</p>}>
+            <Outlet />
+        </Suspense>
+    
+      
+    </section>
   );
 };
+
+export default MovieDetails;
