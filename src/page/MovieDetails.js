@@ -31,7 +31,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     console.log(3);
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     searchFilmById();
   }, []);
 

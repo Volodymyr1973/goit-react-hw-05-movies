@@ -32,7 +32,7 @@ const Reviews = () => {
 
   useEffect(() => {
     console.log(3);
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     searchFilmReviewsById();
   }, []);
 
