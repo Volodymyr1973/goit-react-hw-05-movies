@@ -9,12 +9,10 @@ const Reviews = () => {
   console.log(params.moviesId);
   console.log(paramsId);
   console.log(filmReviews);
-  console.log(filmReviews.results)
+  console.log(filmReviews)
 
   const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
   const originUrl = 'https://api.themoviedb.org/3/';
-
-  // const imgBaseUrl = 'https://image.tmdb.org/t/p/w500/';
 
   const searchFilmReviewsById = () => {
     fetch(
@@ -40,14 +38,15 @@ const Reviews = () => {
   return (
   // <p>rev</p>
     <section>
-      <ul>
+      {filmReviews && <ul>
         {filmReviews.results.length >= 0 && filmReviews.results.map(result => (
-          <li key={result.author}>
+          <li key={result.id}>
             <p>{result.author}</p>
             <p>{result.content}</p>
           </li>
         ))}
-      </ul>
+      </ul>}
+      
     </section>
   );
 };

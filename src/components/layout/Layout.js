@@ -24,7 +24,7 @@ const Layout = () => {
         </Suspense>
        
       </main>
-      <footer>React 2023</footer>
+  
     </>
   );
 };

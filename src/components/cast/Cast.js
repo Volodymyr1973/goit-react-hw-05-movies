@@ -37,8 +37,9 @@ const Cast = () => {
   }, []);
 
   return (
-    // <p>cast</p>
+    // <p>cast{paramsId}</p>
     <section>
+      {filmCreditDetail &&
       <ul>
         {filmCreditDetail.cast.map(hero => (
           <li key={hero.id}>
@@ -51,7 +52,9 @@ const Cast = () => {
           </li>
         ))}
       </ul>
+}
     </section>
+      
   );
 };
 

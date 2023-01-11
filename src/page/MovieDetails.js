@@ -14,6 +14,7 @@ const MovieDetails = () => {
 
   const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
   const originUrl = 'https://api.themoviedb.org/3/';
+  const baseImageUrl = 'https://image.tmdb.org/t/p/w500/';
 
   // const imgBaseUrl = 'https://image.tmdb.org/t/p/w500/';
 
@@ -30,8 +31,7 @@ const MovieDetails = () => {
   };
 
   useEffect(() => {
-    console.log(3);
-    searchFilmById();
+      searchFilmById();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -40,7 +40,7 @@ const MovieDetails = () => {
       {filmDetail && (
         <div>
           <img
-            src={`https://image.tmdb.org/t/p/w500/${filmDetail.poster_path}`}
+            src={`${baseImageUrl}${filmDetail.poster_path}`}
             alt={filmDetail.title}
           />
           <p>
