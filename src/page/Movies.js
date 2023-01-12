@@ -1,26 +1,22 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [searchFilm, setSearchFilm] = useState([]);
   const [searchName, setSearchName] = useState('');
-  const location = useLocation();
-  console.log(location);
-
+  
   const handleSubmitSearchFilm = event => {
     event.preventDefault();
     const firstValue = event.currentTarget.elements.name.value;
     if (firstValue.trim() === '') {
-      event.currentTarget.elements.name.value = '';
+      event.currentTarget.reset();
       return;
     }
     setSearchName(firstValue.trim());
     event.currentTarget.elements.name.value = '';
   };
-  console.log(searchName);
-  console.log(searchFilm);
-
+ 
   const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
   const originUrl = 'https://api.themoviedb.org/3/';
 
@@ -43,7 +39,7 @@ const Movies = () => {
   useEffect(() => {
     if (searchName.trim() === '') {
       return;
-    } else console.log(1);
+    } else
     searchFilmByName(searchName);
     setSearchName('');
   }, [searchName]);

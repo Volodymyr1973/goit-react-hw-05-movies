@@ -14,4 +14,5 @@ export const SearchFilm = (value, paramsId, setFoo) => {
       })
       .then(results => setFoo(results))
       .catch(error => console.log(error));
+      
   };

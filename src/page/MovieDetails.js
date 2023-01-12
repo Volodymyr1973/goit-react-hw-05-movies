@@ -1,16 +1,26 @@
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams, useSearchParams } from 'react-router-dom';
 // import { Cast } from '../components/cast/Cast';
 // import { Reviews } from 'components/reviews/Reviews';
 import { useState, useEffect, Suspense } from 'react';
+import Image from '../components/image/NoFoto.jpg';
+import BackLink from 'components/backlink/BackLink';
 
 const MovieDetails = () => {
   const params = useParams();
   const paramsId = Number(params.moviesId);
   const [filmDetail, setFilmDetail] = useState();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query");
+  const location = useLocation();
+  console.log(setSearchParams)
+  
 
   console.log(params.moviesId);
   console.log(paramsId);
   console.log(filmDetail);
+  console.log(searchParams);
+  console.log(query);
+console.log(location)
 
   const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
   const originUrl = 'https://api.themoviedb.org/3/';
@@ -37,12 +47,14 @@ const MovieDetails = () => {
 
   return (
     <section>
+      <BackLink value="/"/>
       {filmDetail && (
         <div>
-          <img
+          {filmDetail.poster_path !== "" ? <img
             src={`${baseImageUrl}${filmDetail.poster_path}`}
             alt={filmDetail.title}
-          />
+          /> :  <img src={Image} alt="No foto"/>}
+          
           <p>
             {filmDetail.title}
             {filmDetail.release_date ? (

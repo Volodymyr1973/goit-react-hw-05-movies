@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { SearchFilm } from 'components/fetch/Fetch';
+import Image from '../image/NoFoto.jpg'
+
 
 const Cast = () => {
   const params = useParams();
@@ -10,29 +13,8 @@ const Cast = () => {
   console.log(paramsId);
   console.log(filmCreditDetail);
 
-  const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
-  const originUrl = 'https://api.themoviedb.org/3/';
-
-  // const imgBaseUrl = 'https://image.tmdb.org/t/p/w500/';
-
-  const searchFilmCreditById = () => {
-    fetch(
-      `${originUrl}movie/${paramsId}/credits?api_key=${KEY_FILM}&language=en-US`
-    )
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(new Error('Insert other name'));
-      })
-      .then(results => setFilmCreditDetail(results))
-      .catch(error => console.log(error));
-  };
-
   useEffect(() => {
-    console.log(3);
-
-    searchFilmCreditById();
+     SearchFilm('credits', paramsId, setFilmCreditDetail);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -43,10 +25,11 @@ const Cast = () => {
       <ul>
         {filmCreditDetail.cast.map(hero => (
           <li key={hero.id}>
-            <img
+            {hero.profile_path !== "" ? <img
               src={`https://image.tmdb.org/t/p/w500/${hero.profile_path}`}
               alt={hero.original_name}
-            />
+            /> : <img src={Image} alt="No foto"/>}
+            
             <p>{hero.original_name}</p>
             <p>Character: {hero.character}</p>
           </li>
