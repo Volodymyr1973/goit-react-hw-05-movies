@@ -1,9 +1,11 @@
-const { Link } = require("react-router-dom")
+import { Link, useLocation } from "react-router-dom";
 
-const BackLink = ({value}) => {
-    console.log(value)
+
+const BackLink = () => {
+const location = useLocation();
+console.log(location)
     return (
-        <Link to={value}> Go back</Link>
+        <Link to={location.state.from}> Go back</Link>
     )
 }
 

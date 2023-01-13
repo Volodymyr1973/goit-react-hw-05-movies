@@ -1,3 +1,21 @@
-.active {
-  background-color: red;
+.header {
+
+  background-color: whitesmoke;
+  border-bottom: 2px solid gray ;
+  margin-bottom: 20px;
+}
+
+.navigation {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+font-size: 40px;
+color: black
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  
 }

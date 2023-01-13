@@ -1,23 +1,21 @@
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import css from './Layout.module.css'
 // import css from './Layout.module.css';
 
 const Layout = () => {
-  // const active = ({ isActive }) => {
-  //   return isActive ? 'active' : '';
-  // };
-
+ 
   return (
     <>
-      <header>
-        <nav>
-          <NavLink to="/" end>
+      <header className={css.header}>
+        <nav className={css.navigation}>
+          <NavLink className={css.link} to="/" end>
             Home
           </NavLink>
-          <NavLink to="/movies">Movies</NavLink>
+          <NavLink className={css.link} to="/movies">Movies</NavLink>
         </nav>
       </header>
-      <main>
+      <main className={css.main}>
         <Suspense fallback={<p>Loading...</p>}>
           <Outlet />
 

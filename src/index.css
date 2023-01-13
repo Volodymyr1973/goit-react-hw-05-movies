@@ -37,8 +37,18 @@ textarea {
   text-transform: none;
 }
 
+ul {
+  list-style: none;
+}
+
 a {
   display: block;
+  color: black;
+}
+
+img {
+  display: block;
+  width: 240px;
 }
 
 .active {

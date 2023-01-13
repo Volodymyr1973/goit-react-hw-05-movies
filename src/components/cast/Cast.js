@@ -12,6 +12,7 @@ const Cast = () => {
   console.log(params.moviesId);
   console.log(paramsId);
   console.log(filmCreditDetail);
+console.log(Image)
 
   useEffect(() => {
      SearchFilm('credits', paramsId, setFilmCreditDetail);
@@ -25,7 +26,7 @@ const Cast = () => {
       <ul>
         {filmCreditDetail.cast.map(hero => (
           <li key={hero.id}>
-            {hero.profile_path !== "" ? <img
+            {hero.profile_path ? <img
               src={`https://image.tmdb.org/t/p/w500/${hero.profile_path}`}
               alt={hero.original_name}
             /> : <img src={Image} alt="No foto"/>}

@@ -24,12 +24,12 @@ const Reviews = () => {
   // <p>rev</p>
     <section>
       {filmReviews && <ul>
-        {!filmReviews.results ===[] ? filmReviews.results.map(result => (
+        {filmReviews.results.length > 0 ? filmReviews.results.map(result => (
           <li key={result.id}>
             <p>{result.author}</p>
             <p>{result.content}</p>
           </li>
-        )) : <p>We don't have any reviews for this movie</p>}
+        )) : <li>We don't have any reviews for this movie</li>}
       </ul>}
       
     </section>

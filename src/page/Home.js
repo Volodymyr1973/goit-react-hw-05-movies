@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [filmList, setFilmList] = useState([]);
-  console.log(filmList);
   const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
   const originUrl = 'https://api.themoviedb.org/3/';
+  const location = useLocation();
+  console.log(location)
+  
+
 
   const trendFilm = () => {
     fetch(`${originUrl}trending/movie/week?api_key=${KEY_FILM}`)
@@ -36,7 +39,7 @@ const Home = () => {
       <ul>
         {filmList.map(film => (
           <li key={film.id}>
-            <Link to={`movies/${film.id}`}>{nameFilm(film)}</Link>
+            <Link to={`movies/${film.id}`} state={{from: "/home"}}>{nameFilm(film)}</Link>
           </li>
         ))}
       </ul>

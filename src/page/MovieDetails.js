@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 // import { Cast } from '../components/cast/Cast';
 // import { Reviews } from 'components/reviews/Reviews';
 import { useState, useEffect, Suspense } from 'react';
@@ -9,26 +9,16 @@ const MovieDetails = () => {
   const params = useParams();
   const paramsId = Number(params.moviesId);
   const [filmDetail, setFilmDetail] = useState();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get("query");
   const location = useLocation();
-  console.log(setSearchParams)
+  console.log(location.state)
+
+
   
-
-  console.log(params.moviesId);
-  console.log(paramsId);
-  console.log(filmDetail);
-  console.log(searchParams);
-  console.log(query);
-console.log(location)
-
   const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
   const originUrl = 'https://api.themoviedb.org/3/';
   const baseImageUrl = 'https://image.tmdb.org/t/p/w500/';
 
-  // const imgBaseUrl = 'https://image.tmdb.org/t/p/w500/';
-
-  const searchFilmById = () => {
+ const searchFilmById = () => {
     fetch(`${originUrl}movie/${paramsId}?api_key=${KEY_FILM}&language=en-US`)
       .then(response => {
         if (response.ok) {
@@ -47,10 +37,10 @@ console.log(location)
 
   return (
     <section>
-      <BackLink value="/"/>
+      <BackLink />
       {filmDetail && (
         <div>
-          {filmDetail.poster_path !== "" ? <img
+          {filmDetail.poster_path ? <img
             src={`${baseImageUrl}${filmDetail.poster_path}`}
             alt={filmDetail.title}
           /> :  <img src={Image} alt="No foto"/>}
@@ -78,8 +68,8 @@ console.log(location)
         </div>
       )}
       <ul>
-        <li><Link to="cast">Cast</Link></li>
-        <li><Link to="reviews">Reviews</Link></li>
+        <li><Link to="cast" state={{from: location.state.from}}>Cast</Link></li>
+        <li><Link to="reviews" state={{from: location.state.from}}>Reviews</Link></li>
       </ul>
 
       {/* <Cast />

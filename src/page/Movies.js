@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 // import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [searchFilm, setSearchFilm] = useState([]);
   const [searchName, setSearchName] = useState('');
+  const location = useLocation();
+
+  console.log(location)
   
   const handleSubmitSearchFilm = event => {
     event.preventDefault();
@@ -66,7 +69,7 @@ const Movies = () => {
         <ul>
           {searchFilm.map(film => (
             <li key={film.id}>
-              <Link to={`/movies/${film.id}`}>{film.title}</Link>
+              <Link to={`/movies/${film.id}`} state={{from: "/movies"}}>{film.title}</Link>
             </li>
           ))}
         </ul>
