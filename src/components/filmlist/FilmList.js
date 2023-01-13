@@ -30,7 +30,7 @@ const [searchFilm, setSearchFilm] = useState([]);
     } else
   
     searchFilmByName();
-    // setSearchName('');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.searchName]);
 
  
