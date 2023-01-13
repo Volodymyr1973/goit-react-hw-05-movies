@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
+import css from './BackLink.module.css'
 
 
 const BackLink = () => {
 const location = useLocation();
-console.log(location)
     return (
-        <Link to={location.state.from}> Go back</Link>
+        <Link className={css.link} to={location.state.from}> <span className={css.arrow}>&#10229;</span> Go back</Link>
     )
 }
 

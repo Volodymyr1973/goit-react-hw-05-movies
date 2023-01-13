@@ -1,4 +1,6 @@
-export const SearchFilm = (value, paramsId, setFoo) => {
+import PropTypes from "prop-types";
+ 
+ export const SearchFilm = (value, paramsId, setFoo) => {
     const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
     const originUrl = 'https://api.themoviedb.org/3/';
 
@@ -15,4 +17,10 @@ export const SearchFilm = (value, paramsId, setFoo) => {
       .then(results => setFoo(results))
       .catch(error => console.log(error));
       
+  };
+
+  SearchFilm.propTypes = {
+    value: PropTypes.string.isRequired,
+    paramsId: PropTypes.string.isRequired,
+    setFoo: PropTypes.func.isRequired,
   };

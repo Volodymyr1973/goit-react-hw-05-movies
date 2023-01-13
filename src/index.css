@@ -39,20 +39,22 @@ textarea {
 
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-  display: block;
-  color: black;
+color: dodgerblue
 }
 
 img {
   display: block;
   width: 240px;
+  height: 360px;
 }
 
-.active {
+/* .active {
   text-decoration: none;
   background-color: dodgerblue;
   color: white;
-}
+} */

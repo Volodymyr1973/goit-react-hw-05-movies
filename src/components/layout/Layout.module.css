@@ -2,8 +2,7 @@
 
   background-color: whitesmoke;
   border-bottom: 2px solid gray ;
-  margin-bottom: 20px;
-}
+  }
 
 .navigation {
   width: 250px;
@@ -12,6 +11,10 @@
   margin-left: 20px;
 font-size: 40px;
 color: black
+}
+
+.main {
+  padding: 20px;
 }
 
 .link {

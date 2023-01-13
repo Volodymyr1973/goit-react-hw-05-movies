@@ -9,10 +9,10 @@ const Layout = () => {
     <>
       <header className={css.header}>
         <nav className={css.navigation}>
-          <NavLink className={css.link} to="/" end>
+          <NavLink className={css.link} style={({ isActive }) =>({color: isActive ? 'orangered' : 'dodgerblue'})}to="/" end>
             Home
           </NavLink>
-          <NavLink className={css.link} to="/movies">Movies</NavLink>
+          <NavLink className={css.link} style={({ isActive }) =>({color: isActive ? 'orangered' : 'dodgerblue'})} to="/movies">Movies</NavLink>
         </nav>
       </header>
       <main className={css.main}>

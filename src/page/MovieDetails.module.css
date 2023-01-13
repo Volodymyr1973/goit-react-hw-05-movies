@@ -1,0 +1,27 @@
+.section {
+    display: flex;
+}
+
+.image {
+    margin: 0 20px 20px 0;
+}
+
+.main_title {
+    font-size: 30px;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.line {
+    font-size: 15px;
+}
+
+.link_list {
+    padding: 20px 0 20px 0;
+    background-color: whitesmoke;
+  border-bottom: 2px solid gray ;
+  border-top: 2px solid gray ;
+  margin-bottom: 20px;
+}
