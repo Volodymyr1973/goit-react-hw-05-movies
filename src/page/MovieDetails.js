@@ -5,7 +5,6 @@ import { useState, useEffect, Suspense } from 'react';
 import Image from '../components/image/NoFoto.jpg';
 import BackLink from 'components/backlink/BackLink';
 import css from './MovieDetails.module.css';
-import PropTypes from "prop-types";
 import { nanoid } from 'nanoid'
 
 
