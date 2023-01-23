@@ -6,15 +6,21 @@ import PropTypes from "prop-types";
 const Movies = () => {
   const [searchName, setSearchName] = useState('');
  
+const handleChange = event => {
+  console.log(event.currentTarget.value)
+  const filmSearch = event.currentTarget.value;
+  if(filmSearch.trim() === '') {
+    event.currentTarget.value = '';
+    return;
+  } else setSearchName(filmSearch.trim());
+  
+}
+
   const handleSubmitSearchFilm = event => {
     event.preventDefault();
-    const firstValue = event.currentTarget.elements.name.value;
-    if (firstValue.trim() === '') {
-      event.currentTarget.reset();
-      return;
-    }
-    setSearchName(firstValue.trim());
-    event.currentTarget.reset();
+    setSearchName(searchName);
+    event.currentTarget.elements.name.value = '';
+
   };
  
   return (
@@ -27,6 +33,8 @@ const Movies = () => {
             autoComplete="off"
             autoFocus
             placeholder="Search films"
+            // value={text}
+            onChange={handleChange}
           />
           <button type="submit">
             <span>Search</span>

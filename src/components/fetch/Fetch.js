@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+
  
  export const SearchFilm = (value, paramsId, setFoo) => {
     const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
@@ -19,8 +19,4 @@ import PropTypes from "prop-types";
       
   };
 
-  SearchFilm.propTypes = {
-    value: PropTypes.string.isRequired,
-    paramsId: PropTypes.string.isRequired,
-    setFoo: PropTypes.func.isRequired,
-  };
+  

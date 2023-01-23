@@ -86,7 +86,3 @@ const MovieDetails = () => {
 
 export default MovieDetails;
 
-MovieDetails.propTypes = {
-  state: PropTypes.object,
-  
-};
