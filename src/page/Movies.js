@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import FilmList from 'components/filmlist/FilmList';
 import PropTypes from "prop-types";
+// import { useSearchParams } from 'react-router-dom';
 
 
 const Movies = () => {
   const [searchName, setSearchName] = useState('');
- 
+  // const [searchParams, setSearchParams] = useSearchParams();
+
+
 const handleChange = event => {
   console.log(event.currentTarget.value)
   const filmSearch = event.currentTarget.value;
