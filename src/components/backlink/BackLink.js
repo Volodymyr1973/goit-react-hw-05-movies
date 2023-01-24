@@ -1,9 +1,9 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import css from './BackLink.module.css'
 
 
 const BackLink = () => {
-const location = useLocation();
+// const location = useLocation();
 const navigate = useNavigate()
 const goBack = () => navigate(-1)
     return (
