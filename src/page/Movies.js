@@ -1,42 +1,42 @@
 import { useState } from 'react';
 import FilmList from 'components/filmlist/FilmList';
 import PropTypes from "prop-types";
-// import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 
 const Movies = () => {
-  const [searchName, setSearchName] = useState('');
-  // const [searchParams, setSearchParams] = useSearchParams();
 
-
-const handleChange = event => {
-  console.log(event.currentTarget.value)
-  const filmSearch = event.currentTarget.value;
-  if(filmSearch.trim() === '') {
-    event.currentTarget.value = '';
-    return;
-  } else setSearchName(filmSearch.trim());
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('search') || '';
+  const [searchName, setSearchName] = useState(searchQuery);
   
-}
+const handleChange = event => {
+  const filmSearch = event.currentTarget.value;
+  setSearchName(filmSearch);
+  }
 
   const handleSubmitSearchFilm = event => {
     event.preventDefault();
+    if(searchName.trim() === '') {
+      event.currentTarget.value = '';
+      return;
+    } else
     setSearchName(searchName);
-    event.currentTarget.elements.name.value = '';
-
+    setSearchParams({search: searchName});
+    event.currentTarget.elements.search.value = '';
   };
- 
+
   return (
     <>
       <div>
         <form onSubmit={handleSubmitSearchFilm}>
           <input
-            name="name"
+            name="search"
             type="text"
             autoComplete="off"
             autoFocus
             placeholder="Search films"
-            // value={text}
+            value={searchName}
             onChange={handleChange}
           />
           <button type="submit">
