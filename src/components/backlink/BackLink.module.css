@@ -1,6 +1,16 @@
 .link {
     display: inline-block;
     margin-bottom: 10px;
+    padding: 3px;
+    color: dodgerblue;
+    border: 1px solid dodgerblue;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: orangered;
+    border-color: orangered;
 }
 
 .arrow {

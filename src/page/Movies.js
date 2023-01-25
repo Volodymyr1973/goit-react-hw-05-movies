@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FilmList from 'components/filmlist/FilmList';
 import PropTypes from "prop-types";
 import { useSearchParams } from 'react-router-dom';
@@ -9,28 +9,40 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
   const [searchName, setSearchName] = useState(searchQuery);
+  const [search, setSearch] = useState('');
   
+
+
+useEffect(() => {
+  setSearch(searchQuery);
+  setSearchName('');  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
+
 const handleChange = event => {
   const filmSearch = event.currentTarget.value;
-  setSearchName(filmSearch);
-  }
+  
+  if(filmSearch.trim() === '') {
+    event.currentTarget.value = '';
+    return;
+  } else 
+  setSearchName(filmSearch);  
+}
 
   const handleSubmitSearchFilm = event => {
     event.preventDefault();
-    if(searchName.trim() === '') {
-      event.currentTarget.value = '';
-      return;
-    } else
-    setSearchName(searchName);
+    setSearch(searchName);
+    event.currentTarget[0].value = '';
     setSearchParams({search: searchName});
-    event.currentTarget.elements.search.value = '';
   };
+ 
 
   return (
     <>
       <div>
         <form onSubmit={handleSubmitSearchFilm}>
           <input
+          id="movie_input"
             name="search"
             type="text"
             autoComplete="off"
@@ -44,7 +56,7 @@ const handleChange = event => {
           </button>
         </form>
       </div>
-            <FilmList searchName={searchName}/>
+            <FilmList searchName={search}/>
     </>
   );
 };

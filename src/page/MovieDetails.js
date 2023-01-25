@@ -6,7 +6,8 @@ import Image from '../components/image/NoFoto.jpg';
 import BackLink from 'components/backlink/BackLink';
 import css from './MovieDetails.module.css';
 import { nanoid } from 'nanoid';
-import { KEY_FILM, originUrl, baseImageUrl } from '../components/constants/Constants'
+import { baseImageUrl } from '../components/constants/Constants'
+import { searchFilmById } from 'components/fetch/Fetch';
 
 
 const MovieDetails = () => {
@@ -14,24 +15,9 @@ const MovieDetails = () => {
   const paramsId = Number(params.moviesId);
   const [filmDetail, setFilmDetail] = useState();
   const location = useLocation();
-  // const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
-  // const originUrl = 'https://api.themoviedb.org/3/';
-  // const baseImageUrl = 'https://image.tmdb.org/t/p/w500/';
-
- const searchFilmById = () => {
-    fetch(`${originUrl}movie/${paramsId}?api_key=${KEY_FILM}&language=en-US`)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(new Error('Insert other name'));
-      })
-      .then(results => setFilmDetail(results))
-      .catch(error => console.log(error));
-  };
-
+ 
   useEffect(() => {
-      searchFilmById();
+      searchFilmById(paramsId, setFilmDetail);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -1,35 +1,20 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { searchFilmByName } from "components/fetch/Fetch";
 
 const FilmList = (props) => {
 const [searchFilm, setSearchFilm] = useState([]);
    
-  const KEY_FILM = '0402ef8c6d0b2370fa6ac2b572dad398';
-  const originUrl = 'https://api.themoviedb.org/3/';
   const query = "query=";
   const name = props.searchName;
-
-  const searchFilmByName = () => {
-    fetch(
-      `${originUrl}search/movie?api_key=${KEY_FILM}&${query}${name}&language=en-US`
-    )
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(new Error('Insert other name'));
-      })
-      .then(({ results }) => setSearchFilm(results))
-      .catch(error => console.log(error));
-  };
 
   useEffect(() => {
     if (props.searchName === '') {
       return;
     } else
   
-    searchFilmByName();
+    searchFilmByName(query, name, setSearchFilm);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.searchName]);
 
