@@ -1,8 +1,9 @@
+// import axios from 'axios'
 import { KEY_FILM, originUrl } from '../constants/Constants'
  
  export const SearchFilm = (value, paramsId, setFoo) => {
-   
-    fetch(
+
+      fetch(
       `${originUrl}movie/${paramsId}/${value}?api_key=${KEY_FILM}&language=en-US`
     )
       .then(response => {

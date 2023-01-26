@@ -15,16 +15,14 @@ const Movies = () => {
 
 useEffect(() => {
   setSearch(searchQuery);
-  setSearchName('');  
+  reset();
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
 
 const handleChange = event => {
   const filmSearch = event.currentTarget.value;
-  
-  if(filmSearch.trim() === '') {
-    event.currentTarget.value = '';
-    return;
+   if(filmSearch.trim() === '') {
+      return;
   } else 
   setSearchName(filmSearch);  
 }
@@ -32,9 +30,13 @@ const handleChange = event => {
   const handleSubmitSearchFilm = event => {
     event.preventDefault();
     setSearch(searchName);
-    event.currentTarget[0].value = '';
     setSearchParams({search: searchName});
+    reset();
   };
+
+  const reset = () => {
+setSearchName('')
+  }
  
 
   return (
