@@ -55,8 +55,8 @@ const MovieDetails = () => {
                   </div>
       )}
       <ul className={css.link_list}>
-        <li key={nanoid()}><Link to="cast" state={{from: location.state.from}}>Cast</Link></li>
-        <li key={nanoid()}><Link to="reviews" state={{from: location.state.from}}>Reviews</Link></li>
+        <li key={nanoid()}><Link to="cast" state={{from: location.state?.from ?? "/"}}>Cast</Link></li>
+        <li key={nanoid()}><Link to="reviews" state={{from: location.state?.from ?? "/"}}>Reviews</Link></li>
       </ul>
 
       {/* <Cast />
