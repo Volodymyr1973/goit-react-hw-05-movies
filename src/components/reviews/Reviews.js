@@ -9,7 +9,7 @@ const Reviews = () => {
   const [filmReviews, setFilmReviews] = useState();
  
   useEffect(() => {
-     SearchFilm("reviews", paramsId, setFilmReviews);
+     SearchFilm("reviews", paramsId).then(({data}) => setFilmReviews(data)).catch(error => console.log(error));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

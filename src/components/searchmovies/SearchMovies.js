@@ -10,21 +10,23 @@ export const SearchMovies = ({searchQuery, setSearchParams}) => {
 
 const handleChange = event => {
   const filmSearch = event.target.value;
-   if(filmSearch === '') {
-      reset();
-  } else 
+  //  if(filmSearch === '') {
+  //     reset();
+  // } else 
   setSearchName(filmSearch);  
 }
 
   const handleSubmit = event => {
     event.preventDefault();
-    const nextParams = searchName !== "" ? { search: searchName } : {};
+    const nextParams = searchName.trim() !== "" ? { search: searchName } : {};
     setSearchParams(nextParams);
     };
 
-  const reset = () => {
-setSearchName('')
-  }
+// Так робив, щоб очищати форму
+
+//   const reset = () => {
+// setSearchName('')
+//   }
  
 
   return (

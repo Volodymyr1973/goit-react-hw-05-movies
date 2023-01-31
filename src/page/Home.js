@@ -13,7 +13,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-  trendFilm(setFilmList);
+  trendFilm().then(({data}) => setFilmList(data.results)).catch(error => console.log(error));
   }, []);
 
   return (

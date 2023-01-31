@@ -11,7 +11,7 @@ const Cast = () => {
   const [filmCreditDetail, setFilmCreditDetail] = useState();
 
   useEffect(() => {
-    SearchFilm('credits', paramsId, setFilmCreditDetail);
+    SearchFilm("credits", paramsId).then(({data}) => setFilmCreditDetail(data)).catch(error => console.log(error));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -6,7 +6,7 @@ import { searchFilmByName } from "components/fetch/Fetch";
 const FilmList = (props) => {
 const [searchFilm, setSearchFilm] = useState([]);
    
-  const query = "query=";
+  // const query = "query=";
   const name = props.searchName;
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const [searchFilm, setSearchFilm] = useState([]);
       return;
     } else
   
-    searchFilmByName(query, name, setSearchFilm);
+    searchFilmByName(name).then(({data}) => setSearchFilm(data.results)).catch(error => console.log(error));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.searchName]);
 

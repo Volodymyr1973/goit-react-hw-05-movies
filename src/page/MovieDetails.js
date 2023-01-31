@@ -17,7 +17,7 @@ const MovieDetails = () => {
   const location = useLocation();
  
   useEffect(() => {
-      searchFilmById(paramsId, setFilmDetail);
+      searchFilmById(paramsId).then(({data}) => setFilmDetail(data)).catch(error => console.log(error));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

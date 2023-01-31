@@ -1,44 +1,31 @@
-import axios from 'axios'
-import { KEY_FILM, originUrl } from '../constants/Constants'
+// import axios from 'axios';
+import API from '../Api'
+import { KEY_FILM } from '../constants/Constants';
  
- export const SearchFilm = (value, paramsId, setFoo) => {
-
-  const apiUrl = `${originUrl}movie/${paramsId}/${value}?api_key=${KEY_FILM}&language=en-US`;
-  axios.get(apiUrl).then((resp) => {
-    const allPersons = resp.data;
-    setFoo(allPersons);
-  });
+ export const SearchFilm = (value, paramsId ) => {
+  const apiUrl = `movie/${paramsId}/${value}?api_key=${KEY_FILM}&language=en-US`;
+  return API.get(apiUrl);
 
   };
 
- export  const trendFilm = (setFilmList) => {
+ export  const trendFilm = () => {
     
-  const apiUrl = `${originUrl}trending/movie/week?api_key=${KEY_FILM}&language=en-US`;
-  axios.get(apiUrl).then((resp) => {
-    const allPersons = resp.data.results;
-    setFilmList(allPersons);
-    // console.log(allPersons)
-  });
+  const apiUrl = `trending/movie/week?api_key=${KEY_FILM}&language=en-US`;
+  return API.get(apiUrl)
   
   };
 
- export const searchFilmById = (paramsId, setFilmDetail) => {
+ export const searchFilmById = (paramsId) => {
 
-  const apiUrl = `${originUrl}movie/${paramsId}?api_key=${KEY_FILM}&language=en-US`;
-  axios.get(apiUrl).then((resp) => {
-    const allPersons = resp.data;
-    setFilmDetail(allPersons);
-  });
-
- 
+  const apiUrl = `movie/${paramsId}?api_key=${KEY_FILM}&language=en-US`;
+  return API.get(apiUrl)
+  
   };
 
-  export const searchFilmByName = (query, name, setSearchFilm) => {
+  export const searchFilmByName = (name) => {
 
-    const apiUrl = `${originUrl}search/movie?api_key=${KEY_FILM}&${query}${name}&language=en-US`;
-    axios.get(apiUrl).then((resp) => {
-      const allPersons = resp.data.results;
-      setSearchFilm(allPersons);
-    });
+    const apiUrl = `search/movie?api_key=${KEY_FILM}&query=${name}&language=en-US`;
+    return API.get(apiUrl);
+  
 
   };
